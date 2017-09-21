@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\state\Entity;
+namespace Drupal\state_form_entity\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
 
@@ -8,15 +8,14 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  * Defines a State configuration entity class.
  *
  * @ConfigEntityType(
- *   id = "state",
- *   label = @Translation("State"),
- *   fieldable = FALSE,
+ *   id = "state_form_entity",
+ *   label = @Translation("State form entity"),
  *   handlers = {
- *     "list_builder" = "Drupal\state\StateListBuilder",
+ *     "list_builder" = "Drupal\state_form_entity\StateListBuilder",
  *     "form" = {
- *       "add" = "Drupal\state\Form\StateForm",
- *       "edit" = "Drupal\state\Form\StateForm",
- *       "delete" = "Drupal\state\Form\StatDeleteForm"
+ *       "add" = "Drupal\state_form_entity\Form\StateForm",
+ *       "edit" = "Drupal\state_form_entity\Form\StateForm",
+ *       "delete" = "Drupal\state_form_entity\Form\StatDeleteForm"
  *     }
  *   },
  *   config_prefix = "state",
@@ -26,8 +25,8 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *     "label" = "name",
  *   },
  *   links = {
- *     "edit-form" = "/admin/structure/state/edit/{type}",
- *     "delete" = "/admin/structure/state/delete/{type}",
+ *     "edit-form" = "/admin/structure/state_form_entity/edit/{type}",
+ *     "delete" = "/admin/structure/state_form_entity/delete/{type}",
  *   },
  *   config_export = {
  *     "name",
@@ -42,7 +41,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *   }
  * )
  */
-class State extends ConfigEntityBundleBase {
+class StateFormEntity extends ConfigEntityBundleBase {
 
   /**
    * The field name toggle.
@@ -91,14 +90,14 @@ class State extends ConfigEntityBundleBase {
    *
    * @var array
    */
-  public $stateTypeElement;
+  public $statesFormEntityTypeElement;
 
   /**
    * The different states behaviors.
    *
    * @var array
    */
-  public $statesType;
+  public $statesFormEntityType;
 
   /**
    * The ajax behaviors callback.
@@ -179,15 +178,15 @@ class State extends ConfigEntityBundleBase {
   /**
    * @return array
    */
-  public function getStateTypeElement() {
-    return $this->stateTypeElement;
+  public function getStateFormEntityTypeElement() {
+    return $this->statesFormEntityTypeElement;
   }
 
   /**
-   * @param array $stateTypeElement
+   * @param array $statesFormEntityTypeElement
    */
-  public function setStateTypeElement($stateTypeElement) {
-    $this->stateTypeElement = $stateTypeElement;
+  public function setStatesFormEntityTypeElement($statesFormEntityTypeElement) {
+    $this->statesFormEntityTypeElement = $statesFormEntityTypeElement;
   }
 
   /**
@@ -196,18 +195,18 @@ class State extends ConfigEntityBundleBase {
    * @return mixed
    *   The states or null.
    */
-  public function getStatesType() {
-    return $this->statesType;
+  public function getStatesFormEntityTypeType() {
+    return $this->statesFormEntityType;
   }
 
   /**
    * Set the states.
    *
-   * @param mixed $states
+   * @param mixed $statesFormEntityType
    *   The states from form.
    */
-  public function setStatesType($statesType) {
-    $this->statesType = $statesType;
+  public function setStatesFormEntityType($statesFormEntityType) {
+    $this->statesFormEntityType = $statesFormEntityType;
   }
 
   /**
@@ -228,6 +227,20 @@ class State extends ConfigEntityBundleBase {
    */
   public function setValueNested($valueNested) {
     $this->valueNested = $valueNested;
+  }
+
+  /**
+   * @return string
+   */
+  public function getDescription() {
+    return $this->description;
+  }
+
+  /**
+   * @param string $description
+   */
+  public function setDescription($description) {
+    $this->description = $description;
   }
 
 }

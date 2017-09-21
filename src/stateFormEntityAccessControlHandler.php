@@ -10,9 +10,9 @@ use Drupal\Core\Session\AccountInterface;
 /**
  * Defines the access control handler for the state type entity type.
  *
- * @see \Drupal\state\Entity\StateType
+ * @see \Drupal\state_form_entity\Entity\StateType
  */
-class StateAccessControlHandler extends EntityAccessControlHandler {
+class stateFormEntityAccessControlHandler extends EntityAccessControlHandler {
 
   /**
    * {@inheritdoc}

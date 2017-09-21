@@ -1,32 +1,32 @@
 # Routing for State entity.
-entity.state.collection:
-  path: '/admin/structure/state'
+entity.state_form_entity.collection:
+  path: '/admin/structure/state_form_entity'
   defaults:
-    _entity_list: 'state'
+    _entity_list: 'state_form_entity'
     _title: 'States'
   requirements:
     _permission: 'administer site configuration'
 
-state.add:
-  path: '/admin/structure/state/add'
+state_form_entity.add:
+  path: '/admin/structure/state_form_entity/add'
   defaults:
-    _entity_form: 'state.add'
-    _title: 'Add a new state'
+    _entity_form: 'state_form_entity.add'
+    _title: 'Add a new state_form_entity'
   requirements:
     _permission: 'administer site configuration'
 
-entity.state.edit_form:
-  path: '/admin/structure/state/edit/{state}'
+entity.state_form_entity.edit_form:
+  path: '/admin/structure/state_form_entity/edit/{state_form_entity}'
   defaults:
-    _entity_form: 'state.edit'
-    _title: 'Edit state'
+    _entity_form: 'state_form_entity.edit'
+    _title: 'Edit state form entity'
   requirements:
     _permission: 'administer site configuration'
 
-entity.state.delete_form:
-  path: '/admin/structure/state/delete/{state}'
+entity.state_form_entity.delete_form:
+  path: '/admin/structure/state_form_entity/delete/{state_form_entity}'
   defaults:
-    _entity_form: 'state.delete'
-    _title: 'Delete state'
+    _entity_form: 'state_form_entity.delete'
+    _title: 'Delete state form entity'
   requirements:
     _permission: 'administer site configuration'

@@ -1,13 +1,10 @@
 <?php
 
-namespace Drupal\state\Form;
+namespace Drupal\state_fom_entity\Form;
 
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
-use Drupal\Core\Entity\Entity;
-use Drupal\Core\Entity\EntityFieldManager;
 use Drupal\Core\Entity\EntityForm;
-use Drupal\Core\Entity\EntityType;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -15,9 +12,9 @@ use Drupal\state\StateHelpers;
 
 /**
  * Class StateForm
- * @package Drupal\state\Form
+ * @package Drupal\state_form_entity\Form
  */
-class StateForm extends EntityForm {
+class StateFormEntityForm extends EntityForm {
 
   /**
    * {@inheritdoc}
@@ -25,7 +22,7 @@ class StateForm extends EntityForm {
   public function form(array $form, FormStateInterface $form_state) {
     $form = parent::form($form, $form_state);
 
-    /** @var \Drupal\state\Entity\State $state */
+    /** @var \Drupal\state_form_entity\Entity\StateFormEntity $state */
     $state = $this->entity;
     if ($this->operation == 'add') {
       $form['#title'] = $this->t('Add state');
@@ -67,7 +64,7 @@ class StateForm extends EntityForm {
       '#default_value' => $state->getFormFieldParent(),
       '#description' => t('This text will be displayed on the <em>Add new state</em> page.'),
       '#ajax' => [
-        'callback' => '\Drupal\state\Form\StateForm::displayListFieldAvailable',
+        'callback' => '\Drupal\state_form_entity\Form\StateForm::displayListFieldAvailable',
         'event' => 'change',
       ]
     ];
@@ -82,7 +79,7 @@ class StateForm extends EntityForm {
       '#prefix' => "<div id='ajax-wrapper-entity-field-target-select'>",
       '#suffix' => '</div>',
       '#ajax' => [
-        'callback' => '\Drupal\state\Form\StateForm::generateFieldsListOption',
+        'callback' => '\Drupal\state_form_entity\Form\StateForm::generateFieldsListOption',
         'event' => 'change',
       ]
     ];
@@ -107,7 +104,7 @@ class StateForm extends EntityForm {
       ],
       '#description' => $this->t('This select allow user to select the state type.'),
       '#ajax' => [
-        'callback' => '\Drupal\state\Form\StateForm::getHelpers',
+        'callback' => '\Drupal\state_form_entity\Form\StateForm::getHelpers',
         'event' => 'change',
       ]
     ];
@@ -231,7 +228,7 @@ class StateForm extends EntityForm {
    */
   public static function getHelpers(&$form,FormStateInterface $form_state) {
     $response = new AjaxResponse();
-    $selected = $form_state->getValue('stateTypeElement');
+    $selected = $form_state->getValue('stateFormEntityTypeElement');
     $options = StateHelpers::getStateList($selected);
 
     $form['statesType']['#options'] = $options;
@@ -243,7 +240,7 @@ class StateForm extends EntityForm {
    * {@inheritdoc}
    */
   public function save(array $form, FormStateInterface $form_state) {
-    /** @var \Drupal\state\Entity\State $state */
+    /** @var \Drupal\state_form_entity\Entity\StateFormEntity $state */
     $state = $this->entity;
 
     $status = $state->save();
@@ -260,7 +257,7 @@ class StateForm extends EntityForm {
       )));
     }
 
-    $form_state->setRedirect('entity.state.collection');
+    $form_state->setRedirect('entity.state_form_entity.collection');
   }
 
 }

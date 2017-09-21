@@ -1,5 +1,5 @@
-name: State
+name: state form entity
 type: module
 description: 'API REST to expose editorial content for fdj site and application.'
-package: State
+package: stateFormEntity
 core: '8.x'

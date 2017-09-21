@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\state;
+namespace Drupal\state_form_entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityListBuilder;
 use Drupal\Core\Entity\EntityInterface;
@@ -8,9 +8,9 @@ use Drupal\Core\Entity\EntityInterface;
 /**
  * Defines a class to build a listing of states entities.
  *
- * @see \Drupal\state\Entity\State
+ * @see \Drupal\state_form_entity\Entity\StateFormEntity
  */
-class StateListBuilder extends ConfigEntityListBuilder {
+class stateFormEntityListBuilder extends ConfigEntityListBuilder {
 
   /**
    * {@inheritdoc}
@@ -26,7 +26,7 @@ class StateListBuilder extends ConfigEntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    /** @var $entity \Drupal\state\Entity\State */
+    /** @var $entity \Drupal\state_form_entity\Entity\StateFormEntity */
     // Label
     $row['label'] = $this->getLabel($entity);
 
@@ -34,7 +34,7 @@ class StateListBuilder extends ConfigEntityListBuilder {
     $row['type'] = $entity->id();
 
     // Description
-    $row['type'] = $entity->id();
+    $row['description'] = $entity->getDescription();
 
 
     return $row + parent::buildRow($entity);

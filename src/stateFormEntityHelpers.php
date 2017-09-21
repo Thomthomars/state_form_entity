@@ -1,16 +1,14 @@
 <?php
 
-namespace Drupal\state;
-use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+namespace Drupal\state_form_entity;
+
 use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Class StateHelpers
- * @package Drupal\state
+ * @package Drupal\state_form_entity
  */
-class StateHelpers {
+class stateFormEntityHelpers {
 
   /**
    * @var
@@ -74,18 +72,6 @@ class StateHelpers {
     'readonly' => 'readonly',
   ];
 
-/*
-  public function __construct(EntityTypeManagerInterface $entityTypeManager) {
-    $this->entity_type_manager = $entityTypeManager;
-  }
-
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('entity_type.manager')
-    );
-  }
-*/
-
   /**
    * @param $selected
    * @return mixed
@@ -119,7 +105,7 @@ class StateHelpers {
     }
 
     foreach ($states as $state) {
-      /** @var $state \Drupal\state\Entity\State */
+      /** @var $state \Drupal\state_form_entity\Entity\StateFormEntity */
       if (!isset($form[$state->getFieldTarget()]) && !isset($form[$state->getFieldToggle()])) {
         continue;
       }

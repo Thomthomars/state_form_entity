@@ -1,0 +1,10 @@
+<?php
+
+use Drupal\state_form_entity\StateFormEntityHelpers;
+
+/**
+ * Implements hook_form_alter().
+ */
+function state_form_entity_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  StateFormEntityHelpers::HandlerFormStates($form, $form_state, $form_id);
+}
